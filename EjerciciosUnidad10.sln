@@ -5,7 +5,11 @@ VisualStudioVersion = 17.11.35431.28
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ejercicio1", "Ejercicio1\Ejercicio1.csproj", "{808D26F2-EE1D-41F5-A145-92127657FB07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDAL", "CapaDAL\CapaDAL.csproj", "{B6C828A2-306D-4F4D-9CF7-266F506C4744}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CapaDAL", "CapaDAL\CapaDAL.csproj", "{B6C828A2-306D-4F4D-9CF7-266F506C4744}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudPracticaExamen", "CrudPracticaExamen\CrudPracticaExamen.csproj", "{A3BF71B4-F975-42D2-BECC-3FEFCB8982CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaENT", "CapaENT\CapaENT.csproj", "{11DB3483-0185-4ECB-A1AC-63314F7CE4B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +27,14 @@ Global
 		{B6C828A2-306D-4F4D-9CF7-266F506C4744}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6C828A2-306D-4F4D-9CF7-266F506C4744}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6C828A2-306D-4F4D-9CF7-266F506C4744}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3BF71B4-F975-42D2-BECC-3FEFCB8982CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3BF71B4-F975-42D2-BECC-3FEFCB8982CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3BF71B4-F975-42D2-BECC-3FEFCB8982CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3BF71B4-F975-42D2-BECC-3FEFCB8982CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11DB3483-0185-4ECB-A1AC-63314F7CE4B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11DB3483-0185-4ECB-A1AC-63314F7CE4B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11DB3483-0185-4ECB-A1AC-63314F7CE4B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11DB3483-0185-4ECB-A1AC-63314F7CE4B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
