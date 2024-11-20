@@ -43,7 +43,7 @@ namespace CapaDAL
 
                 {
 
-                    while (lector.Read())
+                    while (lector.Read() && (int)lector["ID"] != id)
 
                     {
                         //Nombre, Apellidos, Telefono, Direccion, Foto, FechaNacimiento, IDDepartamento
