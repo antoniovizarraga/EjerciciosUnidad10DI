@@ -19,8 +19,9 @@
         public ClsPersona()
         {
         }
-        public ClsPersona(string nombre, string apellidos, string telefono, string direccion, string foto, DateTime fechaNacimiento, int idDepartamento)
+        public ClsPersona(int id, string nombre, string apellidos, string telefono, string direccion, string foto, DateTime fechaNacimiento, int idDepartamento)
         {
+            Id = id;
             Nombre = nombre;
             Apellidos = apellidos;
             Telefono = telefono;

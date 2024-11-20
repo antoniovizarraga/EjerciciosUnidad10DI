@@ -14,16 +14,16 @@ namespace CapaDAL
 
             List<ClsPersona> listado = new List<ClsPersona>()
             {
-                new ClsPersona("Paco","Jiménez Ortiz","987654321","Calle Inventada","Lmfao.jpg",DateTime.Parse("10/03/2005"),1),
-                new ClsPersona("María", "Gómez Fernández", "654987321", "Avenida Falsa 123", "maria.jpg", DateTime.Parse("05/06/1995"), 2),
-                new ClsPersona("Luis", "Pérez López", "123456789", "Calle de los Sueños", "luis.png", DateTime.Parse("15/02/1987"), 3),
-                new ClsPersona("Ana", "Martínez García", "789456123", "Plaza del Sol", "ana.jpg", DateTime.Parse("20/11/2000"), 4),
-                new ClsPersona("Carlos", "Hernández Ruiz", "321654987", "Camino Viejo", "carlos.jpeg", DateTime.Parse("01/01/1990"), 5),
-                new ClsPersona("Lucía", "Sánchez Díaz", "456123789", "Calle Nueva", "lucia.jpg", DateTime.Parse("25/08/1993"), 6),
-                new ClsPersona("Javier", "Rodríguez Moreno", "963852741", "Boulevard Principal", "javier.jpg", DateTime.Parse("30/12/1985"), 7),
-                new ClsPersona("Sara", "López Jiménez", "741258963", "Carretera Central", "sara.jpg", DateTime.Parse("12/07/1999"), 8),
-                new ClsPersona("David", "García Torres", "852369741", "Callejón Oscuro", "david.jpg", DateTime.Parse("05/04/2003"), 9),
-                new ClsPersona("Elena", "Ortiz Navarro", "147258369", "Ruta de las Flores", "elena.jpg", DateTime.Parse("19/09/1998"), 10)
+                new ClsPersona(1, "Paco","Jiménez Ortiz","987654321","Calle Inventada","Lmfao.jpg",DateTime.Parse("10/03/2005"),1),
+                new ClsPersona(3, "María", "Gómez Fernández", "654987321", "Avenida Falsa 123", "maria.jpg", DateTime.Parse("05/06/1995"), 2),
+                new ClsPersona(4, "Luis", "Pérez López", "123456789", "Calle de los Sueños", "luis.png", DateTime.Parse("15/02/1987"), 3),
+                new ClsPersona(5, "Ana", "Martínez García", "789456123", "Plaza del Sol", "ana.jpg", DateTime.Parse("20/11/2000"), 4),
+                new ClsPersona(6, "Carlos", "Hernández Ruiz", "321654987", "Camino Viejo", "carlos.jpeg", DateTime.Parse("01/01/1990"), 5),
+                new ClsPersona(7, "Lucía", "Sánchez Díaz", "456123789", "Calle Nueva", "lucia.jpg", DateTime.Parse("25/08/1993"), 6),
+                new ClsPersona(8, "Javier", "Rodríguez Moreno", "963852741", "Boulevard Principal", "javier.jpg", DateTime.Parse("30/12/1985"), 7),
+                new ClsPersona(9, "Sara", "López Jiménez", "741258963", "Carretera Central", "sara.jpg", DateTime.Parse("12/07/1999"), 8),
+                new ClsPersona(10, "David", "García Torres", "852369741", "Callejón Oscuro", "david.jpg", DateTime.Parse("05/04/2003"), 9),
+                new ClsPersona(11, "Elena", "Ortiz Navarro", "147258369", "Ruta de las Flores", "elena.jpg", DateTime.Parse("19/09/1998"), 10)
 
             };
 
@@ -113,17 +113,17 @@ namespace CapaDAL
 
             if(persona == null)
             {
-                persona = new ClsPersona("Desconocido","Desconocido","Desconocido","Desconocido","temp.jpg",DateTime.Now,0);
+                persona = new ClsPersona(0, "Desconocido","Desconocido","Desconocido","Desconocido","temp.jpg",DateTime.Now,0);
             }
 
             return persona;
         }
 
-        public static void AddPersona(String nombre, String apellidos, String telefono, String direccion, String foto, DateTime fechaNac) { 
+        public static void AddPersona(String nombre, String apellidos, String telefono, String direccion, String foto, DateTime fechaNac, int idDepart) { 
 
             int id = ListaPersonas().Max(p => p.Id) + 1;
 
-            ClsPersona persona = new ClsPersona(nombre, apellidos, telefono, direccion, foto, fechaNac, id);
+            ClsPersona persona = new ClsPersona(id, nombre, apellidos, telefono, direccion, foto, fechaNac, idDepart);
 
             ListaPersonas().Add(persona);
 
@@ -136,7 +136,7 @@ namespace CapaDAL
             ListaPersonas().Remove(persona);
         }
 
-        public static void ActualizarPersona(int idPersonaQueActualizar, String nombre, String apellidos, String telefono, String direccion, String foto, DateTime fechaNac)
+        public static void ActualizarPersona(int idPersonaQueActualizar, String nombre, String apellidos, String telefono, String direccion, String foto, DateTime fechaNac, int idDepart)
         {
             ClsPersona persona = BuscarPersonaPorId(idPersonaQueActualizar);
             
@@ -149,9 +149,10 @@ namespace CapaDAL
                 persona.Direccion = direccion;
                 persona.Foto = foto;
                 persona.FechaNacimiento = fechaNac;
+                persona.IDDepartamento = idDepart;
 
                 EliminarPersona(id);
-                AddPersona(persona.Nombre, persona.Apellidos, persona.Telefono, persona.Direccion, persona.Foto, persona.FechaNacimiento);
+                AddPersona(persona.Nombre, persona.Apellidos, persona.Telefono, persona.Direccion, persona.Foto, persona.FechaNacimiento, persona.IDDepartamento);
             }
 
         }

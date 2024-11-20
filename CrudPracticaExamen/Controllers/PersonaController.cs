@@ -29,7 +29,7 @@ namespace CrudPracticaExamen.Controllers
         // GET: PersonaController/Create
         public ActionResult Create()
         {
-            return View();
+            return View(ListadoPersonas.ListaPersonas());
         }
 
         // POST: PersonaController/Create
@@ -39,7 +39,7 @@ namespace CrudPracticaExamen.Controllers
         {
             try
             {
-                ListadoPersonas.AddPersona(persona.Nombre, persona.Apellidos, persona.Telefono, persona.Direccion, persona.Foto, persona.FechaNacimiento);
+                ListadoPersonas.AddPersona(persona.Nombre, persona.Apellidos, persona.Telefono, persona.Direccion, persona.Foto, persona.FechaNacimiento, persona.IDDepartamento);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -76,7 +76,7 @@ namespace CrudPracticaExamen.Controllers
         public ActionResult Delete(int id)
         {
             ListadoPersonas.EliminarPersona(id);
-            return View(ListadoPersonas.ListaPersonas());
+            return View();
         }
 
         // POST: PersonaController/Delete/5
