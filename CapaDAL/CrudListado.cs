@@ -15,7 +15,7 @@ namespace CapaDAL
 
 
         public static ClsPersona BuscarPersonaPorId(int id) { 
-            ClsPersona persona = new ClsPersona();
+            ClsPersona oPersona = new ClsPersona();
 
             SqlConnection miConexion = new SqlConnection();
 
@@ -65,7 +65,7 @@ namespace CapaDAL
 
                         oPersona.IDDepartamento = (int)lector["IDDepartamento"];
 
-                        listadoPersonas.Add(oPersona);
+                        
 
                     }
 
@@ -89,7 +89,31 @@ namespace CapaDAL
                 miConexion.Close();
             }
 
-            return persona;
+            return oPersona;
+        }
+
+        public static void BorrarPersona(int id)
+        {
+            int filasAfectadas;
+
+            SqlConnection conexion = new SqlConnection();
+
+            SqlCommand comando = new SqlCommand();
+
+            conexion.ConnectionString = ClsConexion.GetConexion();
+            comando.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = id;
+
+            try
+            {
+                conexion.Open();
+                comando.CommandText = "DELETE FROM Personas ID=@id";
+                comando.Connection = conexion;
+                filasAfectadas = comando.ExecuteNonQuery();
+
+            }
+            catch (Exception ex) {
+                throw ex;
+            }
         }
     }
 }

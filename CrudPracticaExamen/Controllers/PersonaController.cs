@@ -75,8 +75,8 @@ namespace CrudPracticaExamen.Controllers
         // GET: PersonaController/Delete/5
         public ActionResult Delete(int id)
         {
-            ListadoPersonas.EliminarPersona(id);
-            return View();
+            ClsPersona persona = ListadoPersonas.BuscarPersonaPorId(id);
+            return View(persona);
         }
 
         // POST: PersonaController/Delete/5
@@ -91,7 +91,7 @@ namespace CrudPracticaExamen.Controllers
             }
             catch
             {
-                return View(ListadoPersonas.ListaPersonas());
+                return View();
             }
         }
     }
