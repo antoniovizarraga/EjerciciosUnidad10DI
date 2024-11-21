@@ -106,7 +106,7 @@ namespace CapaDAL
             try
             {
                 conexion.Open();
-                comando.CommandText = "DELETE FROM Personas ID=@id";
+                comando.CommandText = "DELETE FROM Personas WHERE ID=@id";
                 comando.Connection = conexion;
                 filasAfectadas = comando.ExecuteNonQuery();
 

@@ -12,14 +12,14 @@ namespace CrudPracticaExamen.Controllers
         // GET: PersonaController
         public ActionResult Index()
         {
-            var listado = ListadoPersonas.ListaPersonas();
+            var listado = ListadoPersonasBBDD.ListadoDePersonas();
             return View(listado);
         }
 
         // GET: PersonaController/Details/5
         public ActionResult Details(int id)
         {
-            var persona = ListadoPersonas.BuscarPersonaPorId(id);
+            var persona = CrudListado.BuscarPersonaPorId(id);
 
            
 
@@ -29,7 +29,7 @@ namespace CrudPracticaExamen.Controllers
         // GET: PersonaController/Create
         public ActionResult Create()
         {
-            return View(ListadoPersonas.ListaPersonas());
+            return View();
         }
 
         // POST: PersonaController/Create
@@ -39,20 +39,20 @@ namespace CrudPracticaExamen.Controllers
         {
             try
             {
-                ListadoPersonas.AddPersona(persona.Nombre, persona.Apellidos, persona.Telefono, persona.Direccion, persona.Foto, persona.FechaNacimiento, persona.IDDepartamento);
+                //ListadoPersonas.AddPersona(persona.Nombre, persona.Apellidos, persona.Telefono, persona.Direccion, persona.Foto, persona.FechaNacimiento, persona.IDDepartamento);
 
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View(persona);
+                return View();
             }
         }
 
         // GET: PersonaController/Edit/5
         public ActionResult Edit(int id)
         {
-            var persona = ListadoPersonas.BuscarPersonaPorId(id);
+            var persona = CrudListado.BuscarPersonaPorId(id);
             return View(persona);
         }
 
@@ -75,8 +75,9 @@ namespace CrudPracticaExamen.Controllers
         // GET: PersonaController/Delete/5
         public ActionResult Delete(int id)
         {
-            ClsPersona persona = ListadoPersonas.BuscarPersonaPorId(id);
-            return View(persona);
+            
+            
+            return View();
         }
 
         // POST: PersonaController/Delete/5
@@ -86,7 +87,7 @@ namespace CrudPracticaExamen.Controllers
         {
             try
             {
-                ListadoPersonas.EliminarPersona(id);
+                CrudListado.BorrarPersona(id);
                 return RedirectToAction(nameof(Index));
             }
             catch
