@@ -19,7 +19,7 @@ namespace CrudPracticaExamen.Controllers
         // GET: PersonaController/Details/5
         public ActionResult Details(int id)
         {
-            var persona = CrudListado.BuscarPersonaPorId(id);
+            ClsPersona persona = ListadoPersonasBBDD.personaSeleccionada(id);
 
            
 
@@ -38,8 +38,8 @@ namespace CrudPracticaExamen.Controllers
         public ActionResult Create(ClsPersona persona)
         {
             try
-            {
-                //ListadoPersonas.AddPersona(persona.Nombre, persona.Apellidos, persona.Telefono, persona.Direccion, persona.Foto, persona.FechaNacimiento, persona.IDDepartamento);
+            {   
+                ListadoPersonasBBDD.CreaPersonaDAL(persona);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -52,17 +52,22 @@ namespace CrudPracticaExamen.Controllers
         // GET: PersonaController/Edit/5
         public ActionResult Edit(int id)
         {
-            var persona = CrudListado.BuscarPersonaPorId(id);
+            
+
+            var persona = ListadoPersonasBBDD.personaSeleccionada(id);
             return View(persona);
         }
 
         // POST: PersonaController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(ClsPersona persona)
         {
             try
             {
+                //ClsPersona personaEditada = new ClsPersona(id, Nombre, Apellidos, Telefono, Direccion, Foto, FechaNacimiento, IDDepartamento);
+
+                ListadoPersonasBBDD.EditaPersonaDAL(persona);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -75,9 +80,11 @@ namespace CrudPracticaExamen.Controllers
         // GET: PersonaController/Delete/5
         public ActionResult Delete(int id)
         {
-            
-            
-            return View();
+
+            ClsPersona personaABorrar = ListadoPersonasBBDD.personaSeleccionada(id);
+
+            var persona = ListadoPersonasBBDD.BorraPersonaDAL(id);
+            return View(personaABorrar);
         }
 
         // POST: PersonaController/Delete/5
@@ -87,7 +94,7 @@ namespace CrudPracticaExamen.Controllers
         {
             try
             {
-                CrudListado.BorrarPersona(id);
+                ListadoPersonasBBDD.BorraPersonaDAL(id);
                 return RedirectToAction(nameof(Index));
             }
             catch
