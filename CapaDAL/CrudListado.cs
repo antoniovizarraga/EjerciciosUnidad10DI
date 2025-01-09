@@ -43,7 +43,7 @@ namespace CapaDAL
 
                 {
 
-                    while (lector.Read() && (int)lector["ID"] != id)
+                    while (lector.Read())
 
                     {
                         //Nombre, Apellidos, Telefono, Direccion, Foto, FechaNacimiento, IDDepartamento
@@ -92,7 +92,7 @@ namespace CapaDAL
             return oPersona;
         }
 
-        public static void BorrarPersona(int id)
+        public static int BorrarPersona(int id)
         {
             int filasAfectadas;
 
@@ -114,6 +114,8 @@ namespace CapaDAL
             catch (Exception ex) {
                 throw ex;
             }
+
+            return filasAfectadas;
         }
     }
 }
