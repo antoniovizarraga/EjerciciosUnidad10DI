@@ -24,6 +24,7 @@ namespace CapaDAL
             SqlDataReader lector;
 
             miConexion.ConnectionString = ClsConexion.GetConexion();
+            comando.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = id;
 
             try
 
@@ -32,7 +33,7 @@ namespace CapaDAL
                 miConexion.Open();
 
 
-                comando.CommandText = "SELECT * FROM Personas WHERE ID = " + id.ToString();
+                comando.CommandText = "SELECT * FROM Personas WHERE ID=@id";
 
                 comando.Connection = miConexion;
 
