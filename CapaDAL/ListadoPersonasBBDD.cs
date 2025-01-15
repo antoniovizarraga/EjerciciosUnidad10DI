@@ -219,7 +219,7 @@ namespace CapaDAL
                 miComando.Parameters.AddWithValue("@foto", persona.Foto);
                 miComando.Parameters.AddWithValue("@fecha", persona.FechaNacimiento);
                 miComando.Parameters.AddWithValue("@dep", persona.IDDepartamento);
-                miComando.CommandText = "UPDATE personas SET Nombre = @nombre, Apellidos = @apellidos, Telefono = @tel, Foto = @foto, FechaNacimiento = @fecha, Direccion = @dir, idDepartamento = @dep WHERE Id = @id";
+                miComando.CommandText = "UPDATE Personas SET Nombre = @nombre, Apellidos = @apellidos, Telefono = @tel, Foto = @foto, FechaNacimiento = @fecha, Direccion = @dir, idDepartamento = @dep WHERE Id = @id";
 
                 miComando.Connection = miConexion;
 
