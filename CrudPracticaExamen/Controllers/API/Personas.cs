@@ -89,28 +89,25 @@ namespace CrudPracticaExamen.Controllers.API
 
         // PUT api/<PersonaController>/5
         [HttpPut("{id}")]
-        public IActionResult Put([FromBody] ClsPersona persona)
+        public IActionResult Put(int id, [FromBody] ClsPersona persona)
         {
-            IActionResult salida;
-            if (persona != null)
-            {
+            IActionResult res;
 
-                try
-                {
-                    ListadoPersonasBBDD.EditaPersonaDAL(persona);
-                    salida = Ok(persona);
-                }
-                catch
-                {
-                    salida = BadRequest();
-                }
-            }
-            else
+            persona.Id = id;
+
+           
+
+            int lineasAfectadas = ListadoPersonasBBDD.EditaPersonaDAL(persona);
+
+            if(lineasAfectadas > 0)
             {
-                salida = NoContent();
+                res = Ok(lineasAfectadas);
+            } else
+            {
+                res = BadRequest();
             }
 
-            return salida;
+            return res;
         }
 
         [HttpDelete("{id}")]
