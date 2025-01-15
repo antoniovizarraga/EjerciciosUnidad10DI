@@ -197,9 +197,9 @@ namespace CapaDAL
         /// </summary>
         /// <param name="persona"> Persona de la clase ClsPersona</param>
         /// <returns>bool seEdita</returns>
-        public static bool EditaPersonaDAL(ClsPersona persona)
+        public static int EditaPersonaDAL(ClsPersona persona)
         {
-            bool seEdita = false;
+            int res;
 
             SqlConnection miConexion = new SqlConnection();
 
@@ -223,10 +223,7 @@ namespace CapaDAL
 
                 miComando.Connection = miConexion;
 
-                if (miComando.ExecuteNonQuery() > 0)
-                {
-                    seEdita = true;
-                }
+                res = miComando.ExecuteNonQuery();
 
             }
             catch (SqlException exSql)
@@ -239,7 +236,7 @@ namespace CapaDAL
             {
                 miConexion.Close();
             }
-            return seEdita;
+            return res;
 
         }
 

@@ -8,7 +8,7 @@ namespace CrudPracticaExamen.Controllers.API
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PersonaController : ControllerBase
+    public class Personas : ControllerBase
     {
         // GET: api/<PersonasController>
         [HttpGet]
@@ -68,14 +68,49 @@ namespace CrudPracticaExamen.Controllers.API
 
         // POST api/<PersonaAPI>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] ClsPersona persona)
         {
+            IActionResult salida;
+
+            bool result;
+
+            result = ListadoPersonasBBDD.CreaPersonaDAL(persona);
+
+            if(result)
+            {
+                salida = Ok(persona);
+            } else
+            {
+                salida = NoContent();
+            }
+
+            return salida;
         }
 
-        // PUT api/<PersonaAPI>/5
+        // PUT api/<PersonaController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put([FromBody] ClsPersona persona)
         {
+            IActionResult salida;
+            if (persona != null)
+            {
+
+                try
+                {
+                    ListadoPersonasBBDD.EditaPersonaDAL(persona);
+                    salida = Ok(persona);
+                }
+                catch
+                {
+                    salida = BadRequest();
+                }
+            }
+            else
+            {
+                salida = NoContent();
+            }
+
+            return salida;
         }
 
         [HttpDelete("{id}")]
@@ -87,8 +122,7 @@ namespace CrudPracticaExamen.Controllers.API
 
             try
             {
-                miManejadoraPersona = new CrudListado();
-                numFilasAfectadas = CrudListado.BorrarPersona(id);
+                 numFilasAfectadas = CrudListado.BorrarPersona(id);
                 if (numFilasAfectadas == 0)
                 {
                     salida = NotFound();
